@@ -6,11 +6,13 @@ export default function TextForm(props) {
    // console.log("handleUpClick was clicked");
     let res=text.toUpperCase();
     setText(res);
+    props.showAlert("success","Converted to uppercase");
    }
    const handleLwClick=() =>{
    // console.log("handleLwClick was clicked");
     let res=text.toLowerCase();
     setText(res);
+    props.showAlert("success","Converted to lowercase");
    }
 
    const handleCcClick=() =>{
@@ -19,23 +21,27 @@ export default function TextForm(props) {
                  .map(w => w[0].toUpperCase() + w.substring(1).toLowerCase())
                  .join(' ');
      setText(res);
+     props.showAlert("success","Converted to camelcase");
     }
 
     const handleClear=() =>{
         // console.log("handleClear was clicked");
         setText("");
+        props.showAlert("success","Text cleared");
         }
     
      const handleCopy=()=>{
          let text=document.getElementById("MyBox");
          text.select();
          navigator.clipboard.writeText(text.value);
+         props.showAlert("success","Text has been copied to clipboard");
      }   
         
          
      const handleExtraSpaces=()=>{
       let t=text.split(/[ ]+/);
       setText(t.join(" "));
+      props.showAlert("success","Extra spaces has been removed");
   }   
    const handleOnChange=(event) =>{
     //console.log("Text was changed");
